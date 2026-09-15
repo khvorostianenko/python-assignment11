@@ -1,0 +1,59 @@
+Assignment 11, task 4 - reflection
+
+Static vs interactive visualisations
+------------------------------------
+A static chart is one answer, already chosen. The author decides the axes, the
+range and the level of detail, and the reader gets exactly that - which is a
+strength when the message has to survive a print-out, a slide or a PDF that
+someone reads on a train with no network. It is also cheap: matplotlib draws
+the Superstore heatmap in milliseconds, and the result looks the same for
+everybody.
+
+An interactive chart hands part of that authority to the reader. Hovering
+recovers the exact value the pixel hides, zooming turns a smear of 51,000
+points into a readable cluster, and clicking a legend entry removes a series so
+the remaining ones can be compared. The cost is that the page has to ship a
+JavaScript runtime, it cannot be printed honestly, and the author no longer
+controls what the reader ends up looking at.
+
+The practical rule I have been following: static when the finding is settled
+and has to be communicated, interactive when the finding is still being looked
+for - or when the audience will want to ask their own follow-up question.
+
+Dashboards for real-time exploration
+------------------------------------
+A dashboard is worth building when the data keeps changing and the questions
+repeat. My weather project is the clear case: the scraper rewrites the CSVs and
+the SQLite database, and every rebuild invalidates any chart that was exported
+by hand. A Streamlit page reads the database on load, so the numbers are as
+fresh as the last scrape, and the reader picks the city or the date range
+instead of asking me to redraw anything.
+
+The second gain is narrower than "interactivity": a dashboard collapses the
+distance between a question and its answer. Filters, dropdowns and sliders let
+one page serve fifty cities, where a static report would need fifty figures, or
+one figure and a lot of squinting. Real-time exploration also surfaces the
+ugly cases - a station reporting no visibility, a country with one city - that
+a curated chart quietly averages away.
+
+How Plotly improves data communication at work
+----------------------------------------------
+Two things carry over from this lesson into ordinary work. First, hover
+tooltips remove the argument about the exact value. A static chart invites
+"what is that bar, roughly?", and the answer is a guess; with Plotly the number
+is attached to the point, so the conversation moves on to what the number
+means. That matters most with dense data, which is where a static chart has to
+either drop detail or become unreadable.
+
+Second, a Plotly figure exports as a self-contained HTML file. It can be
+attached to an email or dropped on a share, and the recipient interacts with it
+without installing Python, running a notebook or having access to the database
+behind it. That turns a chart from something the analyst has to demonstrate
+into something a colleague can explore alone, which is usually the difference
+between a finding being understood and a finding being ignored.
+
+The limits are worth stating too. Interactivity is not evidence: a badly
+labelled Plotly chart is still a badly labelled chart, only more expensive to
+render. And an interactive page cannot be pasted into a printed report, so the
+same analysis often needs both forms - which is exactly why this assignment has
+us build the two side by side.
