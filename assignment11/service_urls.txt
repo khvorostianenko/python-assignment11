@@ -1,0 +1,3 @@
+Streamlit Community Cloud deployment of the capstone dashboard
+(repository: https://github.com/khvorostianenko/weather-around-the-world):
+https://weather-around-the-world-vocqhsyk7x4y9mfhmr89sc.streamlit.app/
