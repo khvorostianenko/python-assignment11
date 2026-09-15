@@ -1,0 +1,14 @@
+# Virtual environment: rebuilt from requirements.txt, never shared
+.venv/
+
+# Python bytecode caches
+__pycache__/
+*.pyc
+
+# Editor and OS clutter
+.idea/
+.vscode/
+.DS_Store
+
+# Lesson output, not part of the assignment deliverables
+assignment11/iris.html
